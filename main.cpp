@@ -7,70 +7,28 @@
 // Put the assignment code here
 
 class Quaternion {
+  double a, b, c, d; 
+  public:Quaternion(double w, double x, double y, double z): 
+  a{w}, b{x}, c{y}, d{z}{}
 
-  double co1;
-  double co2;
-  double co3;
-  double co4;
-  
-public: 
+bool operator ==(const Quaternion &rhs)const{
+    return (a=rhs.a) && (b=rhs.b)&&(c==rhs.c)&&(d=rhs.d);
 
-Quaternion(double a, double b, double c, double d){
-  co1 = a;
-  co2=b;
-  co3=c;
-  co4=d;
-};
-
-Quaternion operator+(const Quaternion& z) const{
-  Quaternion here{0,0,0,0};
-  here.co1 = this->co1 +z.co1;
-  here.co2 = this->co2 +z.co2;
-  here.co3 = this->co3+ z.co3;
-  here.co4 = this-> co4+z.co4;
-  return here;
-}
-Quaternion operator-(const Quaternion& z)const{
-  Quaternion minus{0,0,0,0};
-  minus.co1 = this->co1 - z.co1;
-  minus.co2 = this->co2 - z.co2;
-  minus.co3 = this->co3 - z.co3;
-  minus.co4 = this->co4 - z.co4;
-  return minus;
-}
-Quaternion operator*(const double& x)const{
-  Quaternion multi{0,0,0,0};
-  multi.co1 = this->co1 * x;
-  multi.co2 = this->co2* x;
-  multi.co3 = this->co3 *x;
-  multi.co4 = this->co4 *x;
-  return multi;
-}
-bool operator== (const Quaternion& z)const{
-  if (this -> co1 == z.co1){
-    if (this-> co2==z.co2){
-      if (this->co3==z.co3){
-        if (this->co4==z.co4){
-          if (this ->co4==z.co4){
-            return true;
-          }
-          else{
-            return false;
-          }
-        }
-        else{
-          return false;
-        }
-      }
-      else{
-        return false; 
-      }
-    }
-    else{
-      return false; 
-    }
   }
-}
+  Quaternion operator+(const Quaternion &rhs)const{
+    Quaternion res {a+rhs.a,b+rhs.b, c+rhs.c+c, d+ rhs.d}; 
+    return res;
+  }
+  Quaternion operator -(const Quaternion &rhs)const{
+    Quaternion res{a-rhs.a, b-rhs.b,c-rhs.c,d-rhs.d};
+    return res;
+
+  }
+  Quaternion operator *(const Quaternion &rhs)const{
+    Quaternion res {a*rhs.a, b*rhs.b, c*rhs.c, d*rhs.d};
+    return res;
+
+  }
 };
 
 
